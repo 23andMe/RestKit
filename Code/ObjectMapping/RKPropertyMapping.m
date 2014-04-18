@@ -50,7 +50,8 @@ static NSString *RKStringByReplacingUnderscoresWithBraces(NSString *string)
 - (BOOL)isEqualToMapping:(RKPropertyMapping *)otherMapping
 {
     return [otherMapping isMemberOfClass:[self class]] &&
-            [self.sourceKeyPath isEqual:otherMapping.sourceKeyPath] &&
+            ((self.sourceKeyPath == nil && otherMapping.sourceKeyPath == nil) ||
+             [self.sourceKeyPath isEqual:otherMapping.sourceKeyPath]) &&
             [self.destinationKeyPath isEqual:otherMapping.destinationKeyPath];
 }
 
